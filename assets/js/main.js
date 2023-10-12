@@ -265,18 +265,18 @@
    * Animation on scroll
    */
 
-
 const select = document.getElementById("pays");
 
-fetch("https://restcountries.com/v3.1/all")
+fetch("https://restcountries.com/v3.1/all?fields=name;translations")
   .then(response => response.json())
   .then(data => {
-    data.sort((a, b) => a.name.common.localeCompare(b.name.common)); // Tri en ordre alphabétique
+    data.sort((a, b) => a.translations.fr.localeCompare(b.translations.fr)); // Tri en ordre alphabétique
     data.forEach(pays => {
       const option = document.createElement("option");
-      option.text = pays.name.common;
+      option.text = pays.translations.fr;
       option.value = pays.name.common;
       select.add(option);
     });
   });
+
 
