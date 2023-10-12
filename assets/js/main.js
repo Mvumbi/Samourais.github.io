@@ -271,6 +271,7 @@ const select = document.getElementById("pays");
 fetch("https://restcountries.com/v3.1/all")
   .then(response => response.json())
   .then(data => {
+    data.sort((a, b) => a.name.common.localeCompare(b.name.common)); // Tri en ordre alphabétique
     data.forEach(pays => {
       const option = document.createElement("option");
       option.text = pays.name.common;
