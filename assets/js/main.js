@@ -264,3 +264,18 @@
   /**
    * Animation on scroll
    */
+
+
+const select = document.getElementById("pays");
+
+fetch("https://restcountries.com/v3.1/all")
+  .then(response => response.json())
+  .then(data => {
+    data.forEach(pays => {
+      const option = document.createElement("option");
+      option.text = pays.name.common;
+      option.value = pays.name.common;
+      select.add(option);
+    });
+  });
+
